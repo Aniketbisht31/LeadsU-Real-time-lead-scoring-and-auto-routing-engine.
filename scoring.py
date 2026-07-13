@@ -5,9 +5,9 @@ from typing import Any
 
 def score_lead(message: str, enrichment: dict[str, Any]) -> tuple[int, str]:
     score = 25
-    if enrichment.get("enriched"):
+    if enrichment.get("industry") != "unknown":
         score += 15
-    if enrichment.get("employees", 0) >= 50:
+    if enrichment.get("company_size") in {"small", "mid-market", "enterprise"}:
         score += 20
     if any(word in message.lower() for word in ("demo", "pricing", "buy", "quote")):
         score += 25

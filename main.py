@@ -7,7 +7,7 @@ from fastapi import FastAPI, status
 from pydantic import BaseModel, EmailStr, Field
 
 from crm import create_contact
-from enrichment import enrich_company
+from enrichment import enrich_lead
 from routing import route_lead
 from scoring import score_lead
 from slack import notify_new_lead
@@ -45,7 +45,7 @@ async def health() -> dict[str, str]:
 @app.post("/leads", response_model=LeadResponse, status_code=status.HTTP_201_CREATED)
 async def create_lead(lead: LeadRequest) -> LeadResponse:
     payload = lead.model_dump()
-    enrichment = await enrich_company(lead.company_domain)
+    enrichment = await enrich_lead(lead.company_domain)
     score, priority = score_lead(lead.message, enrichment)
     route = route_lead(enrichment, priority)
     contact_id = await create_contact(payload, score, route)
