@@ -25,6 +25,7 @@ Inbound leads sit untriaged for hours because someone has to manually check comp
 Most lead-scoring demos return a number with no reasoning, which nobody trusts enough to act on. LeadsU returns a `reasons` list alongside every score — the specific rules that fired — so a rep or manager can audit the decision instead of taking it on faith. That auditability, not raw accuracy, is what makes automated scoring usable in a real sales org.
 
 
+<img width="1072" height="561" alt="image" src="https://github.com/user-attachments/assets/025dede9-7430-42e2-b66f-4dff4d4aaee3" />
 
 ## Tech stack
 
